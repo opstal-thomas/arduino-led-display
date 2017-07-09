@@ -8,7 +8,7 @@
 #define PIN 6
 #define X 20
 #define Y 20
-#define Brightness 100
+#define Brightness 10
 
 // Color definitions
 #define BLACK    0x0000
@@ -72,7 +72,7 @@ void drawPlayerOne(){
     matrix.drawPixel(1,1,WHITE);
   }
 void drawLevelOne(){
-    matrix.drawBitmap(0,0,levelOne,20,20,BLUE);
+    matrix.drawBitmap(0,0,levelOne,20,20,GREEN);
   }
 void drawObjectsOne(){
 //Keys
