@@ -18,10 +18,10 @@
 #define WHITE    0xFFFF
 
 //Input
-#define UP 1
-#define DOWN 2
-#define LEFT 3
-#define RIGHT 4
+#define UP 2
+#define DOWN 4
+#define LEFT 7
+#define RIGHT 8
 
 Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(X, Y, PIN,
                             NEO_MATRIX_TOP      + NEO_MATRIX_LEFT +
@@ -89,6 +89,7 @@ void loop() {
   DrawPlayer();
   DrawEnemies();
   DrawLevelOne();
+  
   matrix.show();
 }
 
