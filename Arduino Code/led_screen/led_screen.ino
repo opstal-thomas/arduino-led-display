@@ -47,7 +47,7 @@ const PROGMEM int row19[20] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0
 const PROGMEM int row20[20] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
 //Level Data
-const uint8_t levelOne[] PROGMEM = {
+const PROGMEM uint8_t levelOne[] = {
   0xff, 0xff, 0xf0,
   0x80, 0x0, 0x10,
   0xff, 0x3f, 0xd0,
@@ -120,16 +120,8 @@ int enemies[5][2] = {
   {1, 11},
 };
 
-void UpdateEnemys() {
-  UpdateEnemyOne();
-  UpdateEnemyTwo();
-  UpdateEnemyThree();
-  UpdateEnemyFour();
-  UpdateEnemyFive();
-}
-
 void setup() {
-  Serial.begin(9600);
+  //Serial.begin(9600);
 
   pinMode(UP, INPUT);
   pinMode(DOWN, INPUT);
@@ -179,19 +171,19 @@ void MovePlayer() {
   }
 
   if (digitalRead(4) == HIGH) {
-    Serial.println("DOWN");
+    //Serial.println("DOWN");
     if (GetRow(playerHorizontalPosition, playerVerticalPosition + 1) != 1)
       playerVerticalPosition++;
   }
 
   if (digitalRead(7) == HIGH) {
-    Serial.println("RIGHT");
+    //Serial.println("RIGHT");
     if (GetRow(playerHorizontalPosition + 1, playerVerticalPosition) != 1)
       playerHorizontalPosition++;
   }
 
   if (digitalRead(8) == HIGH) {
-    Serial.println("LEFT");
+    //Serial.println("LEFT");
     if (GetRow(playerHorizontalPosition - 1, playerVerticalPosition) != 1)
       playerHorizontalPosition--;
   }
@@ -199,6 +191,14 @@ void MovePlayer() {
 
 void DrawPlayer() {
   matrix.drawPixel(playerHorizontalPosition, playerVerticalPosition, WHITE);
+}
+
+void UpdateEnemys() {
+  UpdateEnemyOne();
+  UpdateEnemyTwo();
+  UpdateEnemyThree();
+  UpdateEnemyFour();
+  UpdateEnemyFive();
 }
 
 void UpdateEnemyOne() {
@@ -320,6 +320,7 @@ void DrawLevelOne() {
   matrix.drawBitmap(0, 0, levelOne, 20, 20, GREEN);
 }
 
+//Fixes memory issue
 int GetRow(int horizontal, int vertical) {
   switch (vertical) {
     case 0:
