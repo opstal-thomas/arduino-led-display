@@ -22,31 +22,29 @@ Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(X, Y, PIN,
                             NEO_MATRIX_ROWS     + NEO_MATRIX_ZIGZAG,
                             NEO_GRB             + NEO_KHZ800);
 
-const PROGMEM int row1[20] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-const PROGMEM int row2[20] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
-const PROGMEM int row3[20] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1};
-const PROGMEM int row4[20] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1};
-const PROGMEM int row5[20] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1};
+const int levelOneData[20][20] PROGMEM = {
+  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+  {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+  {1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
+  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1},
+  {1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+  {1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+  {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+  {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+  {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+  {1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+  {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+  {1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1},
+  {1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+  {1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1},
+  {1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+  {1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1},
+  {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},
+  {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1},
+  {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+};
 
-const PROGMEM int row6[20] = {1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1};
-const PROGMEM int row7[20] = {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1};
-const PROGMEM int row8[20] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
-const PROGMEM int row9[20] = {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1};
-const PROGMEM int row10[20] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1};
-
-const PROGMEM int row11[20] = {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1};
-const PROGMEM int row12[20] = {1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1};
-const PROGMEM int row13[20] = {1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-const PROGMEM int row14[20] = {1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1};
-const PROGMEM int row15[20] = {1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
-
-const PROGMEM int row16[20] = {1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1};
-const PROGMEM int row17[20] = {1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1};
-const PROGMEM int row18[20] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
-const PROGMEM int row19[20] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1};
-const PROGMEM int row20[20] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-
-//Level Data
 const PROGMEM uint8_t levelOne[] = {
   0xff, 0xff, 0xf0,
   0x80, 0x0, 0x10,
@@ -70,11 +68,10 @@ const PROGMEM uint8_t levelOne[] = {
   0xff, 0xff, 0xf0
 };
 
-//Input
-const int UP = 2;
-const int DOWN = 4;
-const int LEFT = 7;
-const int RIGHT = 8;
+const int keys[2][2] = {
+  {7, 5},
+  {18, 13},
+};
 
 int playerHorizontalPosition = 1;
 int playerVerticalPosition = 1;
@@ -107,11 +104,6 @@ int enemyFiveCurrentStepCount = 0;
 bool keyOneCollected = false;
 bool keyTwoCollected = false;
 
-int keys[2][2] = {
-  {7, 5},
-  {18, 13},
-};
-
 int enemies[5][2] = {
   {18, 1},
   {15, 4},
@@ -121,12 +113,17 @@ int enemies[5][2] = {
 };
 
 void setup() {
-  //Serial.begin(9600);
+  Serial.begin(9600);
 
-  pinMode(UP, INPUT);
-  pinMode(DOWN, INPUT);
-  pinMode(LEFT, INPUT);
-  pinMode(RIGHT, INPUT);
+  pinMode(A0, OUTPUT);
+  pinMode(A1, OUTPUT);
+  pinMode(A2, OUTPUT);
+  pinMode(A3, OUTPUT);
+
+  digitalWrite(A0, LOW);
+  digitalWrite(A1, LOW);
+  digitalWrite(A2, LOW);
+  digitalWrite(A3, LOW);
 
   matrix.begin();
   matrix.setBrightness(Brightness);
@@ -152,9 +149,10 @@ void loop() {
 
 void PlayerCollisionDetection() {
   for (int i = 0; i < 5; i++) {
-    if (playerHorizontalPosition == enemies[i][0] && playerVerticalPosition == enemies[i][1])
+    if (playerHorizontalPosition == enemies[i][0] && playerVerticalPosition == enemies[i][1]) {
       playerHorizontalPosition = 1;
-    playerVerticalPosition = 1;
+      playerVerticalPosition = 1;
+    }
   }
 
   if ((playerHorizontalPosition == keys[0][0]) && (playerVerticalPosition == keys[0][1]))
@@ -165,32 +163,71 @@ void PlayerCollisionDetection() {
 }
 
 void MovePlayer() {
-  if (digitalRead(2) == HIGH) {
-    if (GetRow(playerHorizontalPosition, playerVerticalPosition - 1) != 1)
+  uint16_t readValue;
+
+  if (digitalRead(A0) == HIGH) {
+    readValue = pgm_read_word(&levelOneData[playerVerticalPosition - 1][playerHorizontalPosition]);
+
+    Serial.println("UP");
+
+    if (readValue != 1)
       playerVerticalPosition--;
   }
 
-  if (digitalRead(4) == HIGH) {
-    //Serial.println("DOWN");
-    if (GetRow(playerHorizontalPosition, playerVerticalPosition + 1) != 1)
+  if (digitalRead(A1) == HIGH) {
+    readValue = pgm_read_word(&levelOneData[playerVerticalPosition + 1][playerHorizontalPosition]);
+
+    Serial.println("DOWN");
+
+    if (readValue != 1)
       playerVerticalPosition++;
   }
 
-  if (digitalRead(7) == HIGH) {
-    //Serial.println("RIGHT");
-    if (GetRow(playerHorizontalPosition + 1, playerVerticalPosition) != 1)
+  if (digitalRead(A2) == HIGH) {
+    readValue = pgm_read_word(&levelOneData[playerVerticalPosition][playerHorizontalPosition + 1]);
+
+    Serial.println("RIGHT");
+
+    if (readValue != 1)
       playerHorizontalPosition++;
   }
 
-  if (digitalRead(8) == HIGH) {
-    //Serial.println("LEFT");
-    if (GetRow(playerHorizontalPosition - 1, playerVerticalPosition) != 1)
+  if (digitalRead(A3) == HIGH) {
+    readValue = pgm_read_word(&levelOneData[playerVerticalPosition][playerHorizontalPosition - 1]);
+
+    Serial.println("LEFT");
+
+    if (readValue != 1)
       playerHorizontalPosition--;
   }
 }
 
 void DrawPlayer() {
   matrix.drawPixel(playerHorizontalPosition, playerVerticalPosition, WHITE);
+}
+
+void DrawEnemies() {
+  matrix.drawPixel(enemyOneHorizontalPosition, 1, RED);
+  matrix.drawPixel(15, enemyTwoVerticalPosition, RED);
+  matrix.drawPixel(11, enemyThreeVerticalPosition, RED);
+  matrix.drawPixel(1, enemyFourVerticalPosition, RED);
+  matrix.drawPixel(enemyFiveHorizontalPosition, 14, RED);
+}
+
+void DrawKeys() {
+  if (!keyOneCollected)
+    matrix.drawPixel(7, 5, BLUE);
+
+  if (!keyTwoCollected)
+    matrix.drawPixel(18, 13, BLUE);
+}
+
+void DrawDoor() {
+  matrix.fillRect(17, 16, 2, 3, YELLOW);
+}
+
+void DrawLevelOne() {
+  matrix.drawBitmap(0, 0, levelOne, 20, 20, GREEN);
 }
 
 void UpdateEnemys() {
@@ -294,74 +331,4 @@ void UpdateEnemyFive() {
   }
 
   enemies[4][0] = enemyFiveHorizontalPosition;
-}
-
-void DrawEnemies() {
-  matrix.drawPixel(enemyOneHorizontalPosition, 1, RED);
-  matrix.drawPixel(15, enemyTwoVerticalPosition, RED);
-  matrix.drawPixel(11, enemyThreeVerticalPosition, RED);
-  matrix.drawPixel(1, enemyFourVerticalPosition, RED);
-  matrix.drawPixel(enemyFiveHorizontalPosition, 14, RED);
-}
-
-void DrawKeys() {
-  if (!keyOneCollected)
-    matrix.drawPixel(7, 5, BLUE);
-
-  if (!keyTwoCollected)
-    matrix.drawPixel(18, 13, BLUE);
-}
-
-void DrawDoor() {
-  matrix.fillRect(17, 16, 2, 3, YELLOW);
-}
-
-void DrawLevelOne() {
-  matrix.drawBitmap(0, 0, levelOne, 20, 20, GREEN);
-}
-
-//Fixes memory issue
-int GetRow(int horizontal, int vertical) {
-  switch (vertical) {
-    case 0:
-      return row1[horizontal];
-    case 1:
-      return row2[horizontal];
-    case 2:
-      return row3[horizontal];
-    case 3:
-      return row4[horizontal];
-    case 4:
-      return row5[horizontal];
-    case 5:
-      return row6[horizontal];
-    case 6:
-      return row7[horizontal];
-    case 7:
-      return row8[horizontal];
-    case 8:
-      return row9[horizontal];
-    case 9:
-      return row10[horizontal];
-    case 10:
-      return row11[horizontal];
-    case 11:
-      return row12[horizontal];
-    case 12:
-      return row13[horizontal];
-    case 13:
-      return row14[horizontal];
-    case 14:
-      return row15[horizontal];
-    case 15:
-      return row16[horizontal];
-    case 16:
-      return row17[horizontal];
-    case 17:
-      return row18[horizontal];
-    case 18:
-      return row19[horizontal];
-    case 19:
-      return row20[horizontal];
-  }
 }
