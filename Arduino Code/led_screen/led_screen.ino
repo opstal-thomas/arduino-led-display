@@ -1,6 +1,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoMatrix.h>
 #include <Adafruit_NeoPixel.h>
+#include <avr/wdt.h>
 #ifndef PSTR
 #define PSTR
 #endif
@@ -113,17 +114,12 @@ int enemies[5][2] = {
 };
 
 void setup() {
-  Serial.begin(9600);
+  MCUSR = 0;
 
-  pinMode(A0, OUTPUT);
-  pinMode(A1, OUTPUT);
-  pinMode(A2, OUTPUT);
-  pinMode(A3, OUTPUT);
-
-  digitalWrite(A0, LOW);
-  digitalWrite(A1, LOW);
-  digitalWrite(A2, LOW);
-  digitalWrite(A3, LOW);
+  pinMode(2, INPUT);
+  pinMode(4, INPUT);
+  pinMode(7, INPUT);
+  pinMode(8, INPUT);
 
   matrix.begin();
   matrix.setBrightness(Brightness);
@@ -160,42 +156,44 @@ void PlayerCollisionDetection() {
 
   if ((playerHorizontalPosition == keys[1][0]) && (playerVerticalPosition == keys[1][1]))
     keyTwoCollected = true;
+
+  if (keyOneCollected && keyTwoCollected) {
+    if (playerHorizontalPosition == 18 && playerVerticalPosition == 18) {
+      wdt_enable(WDTO_15MS);
+
+      for (;;) {
+        
+      }
+    }
+  }
 }
 
 void MovePlayer() {
   uint16_t readValue;
 
-  if (digitalRead(A0) == HIGH) {
+  if (digitalRead(2) == HIGH) {
     readValue = pgm_read_word(&levelOneData[playerVerticalPosition - 1][playerHorizontalPosition]);
-
-    Serial.println("UP");
 
     if (readValue != 1)
       playerVerticalPosition--;
   }
 
-  if (digitalRead(A1) == HIGH) {
+  if (digitalRead(4) == HIGH) {
     readValue = pgm_read_word(&levelOneData[playerVerticalPosition + 1][playerHorizontalPosition]);
-
-    Serial.println("DOWN");
 
     if (readValue != 1)
       playerVerticalPosition++;
   }
 
-  if (digitalRead(A2) == HIGH) {
+  if (digitalRead(7) == HIGH) {
     readValue = pgm_read_word(&levelOneData[playerVerticalPosition][playerHorizontalPosition + 1]);
-
-    Serial.println("RIGHT");
 
     if (readValue != 1)
       playerHorizontalPosition++;
   }
 
-  if (digitalRead(A3) == HIGH) {
+  if (digitalRead(8) == HIGH) {
     readValue = pgm_read_word(&levelOneData[playerVerticalPosition][playerHorizontalPosition - 1]);
-
-    Serial.println("LEFT");
 
     if (readValue != 1)
       playerHorizontalPosition--;
