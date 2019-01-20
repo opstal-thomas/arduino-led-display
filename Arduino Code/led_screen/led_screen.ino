@@ -23,6 +23,7 @@ Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(X, Y, PIN,
                             NEO_MATRIX_ROWS     + NEO_MATRIX_ZIGZAG,
                             NEO_GRB             + NEO_KHZ800);
 
+//Level One Data
 const int levelOneData[20][20] PROGMEM = {
   {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
   {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -46,6 +47,7 @@ const int levelOneData[20][20] PROGMEM = {
   {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 };
 
+//Level One Bitmap
 const PROGMEM uint8_t levelOne[] = {
   0xff, 0xff, 0xf0,
   0x80, 0x0, 0x10,
@@ -127,9 +129,11 @@ void setup() {
 
 void loop() {
   matrix.fillScreen(0);
-  MovePlayer();
+
   UpdateEnemys();
   PlayerCollisionDetection();
+  MovePlayer();
+
   DrawPlayer();
   DrawLevelOne();
   DrawKeys();
@@ -162,7 +166,7 @@ void PlayerCollisionDetection() {
       wdt_enable(WDTO_15MS);
 
       for (;;) {
-        
+
       }
     }
   }
